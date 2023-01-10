@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: grid;
+    min-width: 95vh;
+    grid-template-columns: repeat(3, 300px);
+    grid-gap: 20px;
+    grid-auto-flow: row;
+    padding: 50px;
+}
+
+nav {
+    width: 100%;
+    background-color: #4c0e5f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bp {
+    font-weight: 600;
+}
+
+a {
+    /* text-decoration: none; */
+    color: white;
+}
+
+.intro, .search {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.intro p {
+    font-size: 12px;
+}
+
+::placeholder {
+    color: white;
+  }
+
+img {
+    width: 70px;
+    border-radius: 10%;
+    padding-right: 10px;
+}
+
+.search input {
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+    background-color: #6e3a80;
+    border-radius: 2px;
+    padding: 10px 15px;
+    color: white;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    padding: 10px 15px;
+  
+    border-left: 7px #471b56 solid;
+    border-radius: 5px;
+    background-color: #a97fb8;
+    margin: 3px;
+}
+
+#results {
+    display: flex;
+    flex-direction: row;
+    background-color: #24052d;
+    color: whitesmoke;
+    padding: 20px 10px;
+    justify-content: end;
+}
+
+.item-result {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   max-width: 300px;
+   padding: 10px 10px;
+   margin-left: 15px;
+   text-align: center;
+   background-color: #8f649d;
+   align-items: center;
+   border-radius: 5px;
+}
+
+.item:hover {
+    color: whitesmoke;
+    background-color: #6e3a80;
+}
+
+.bikes, .bikes-result {
+    min-height: 25px;
+    min-width: 25px;
+    font-weight: 20px;
+    font-size: 16px;
+    font-weight: 800;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+.bikes-result {
+    border-right: dotted 2px white;
+    padding-right: 10px;
+}
+
+.location, .location-result {
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.bikes-off, .bikes-off-result {
+    min-height: 25px;
+    min-width: 25px;
+    font-weight: 20px;
+    font-size: 16px;
+    font-weight: 800;
+    color: whitesmoke;
+    border-radius: 4px;
+    background-color: crimson;
+}
+
+.bikes-off .fa-solid {
+    color: rgb(127, 74, 165);
+}
+
+.fa-solid {
+    color: rgb(67, 33, 91);
+}
