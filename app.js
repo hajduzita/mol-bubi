@@ -1,10 +1,11 @@
 const API = 'https://futar.bkk.hu/api/query/v1/ws/otp/api/where/bicycle-rental.json?key=apaiary-test&version=3&appVersion=apiary-1.0&includeReferences=true';
-
 const container = document.querySelector('.container');
 const results = document.getElementById('results');
 const search = document.getElementById('search');
+const upButton = document.getElementById('to-top-button');
 let search_term;
 
+// Fetch data
 async function fetchBubiData() {
     const response = await fetch(API);
     const json = await response.json();
@@ -54,6 +55,7 @@ async function fetchBubiData() {
 
 fetchBubiData();
 
+// Search data
 search.addEventListener('input', (event) => {
     search_term = event.target.value.toLowerCase();
     showList();
@@ -105,4 +107,22 @@ async function bubiDataSearch() {
         })
     );
 
+}
+
+// Scroll to top button
+window.onscroll = function() {
+    scrollFn();
+}
+
+function scrollFn() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        upButton.style.display = 'block';
+    } else {
+        upButton.style.display = 'none';
+    }
+}
+
+function jumpToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
