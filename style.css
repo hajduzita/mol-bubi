@@ -9,6 +9,7 @@
     display: grid;
     min-width: 95vh;
     grid-template-columns: repeat(3, 300px);
+    justify-content: center;
     grid-gap: 20px;
     grid-auto-flow: row;
     padding: 50px;
@@ -65,38 +66,41 @@ img {
     justify-content: space-between;
     max-width: 300px;
     padding: 10px 15px;
-  
     border-left: 7px #471b56 solid;
     border-radius: 5px;
     background-color: #a97fb8;
     margin: 3px;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.25); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.25);
 }
 
 #results {
+    float: right;
     display: flex;
-    flex-direction: row;
-    background-color: #24052d;
+    flex-direction: column;
     color: whitesmoke;
-    padding: 20px 10px;
-    justify-content: end;
+    align-items: flex-end; 
 }
 
 .item-result {
    display: flex;
+   position: relative;
    flex-wrap: wrap;
-   gap: 20px;
-   max-width: 300px;
-   padding: 10px 10px;
+   justify-content: space-between;
+   min-width: 340px;
+   padding: 10px 15px;
    margin-left: 15px;
    text-align: center;
    background-color: #8f649d;
    align-items: center;
-   border-radius: 5px;
+   border-bottom: #471b56 1px dotted;
 }
 
 .item:hover {
     color: whitesmoke;
     background-color: #6e3a80;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0 ,0 , 0.35); 
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.35);
 }
 
 .bikes, .bikes-result {
@@ -110,7 +114,6 @@ img {
 }
 
 .bikes-result {
-    border-right: dotted 2px white;
     padding-right: 10px;
 }
 
@@ -119,7 +122,7 @@ img {
     font-size: 13px;
 }
 
-.bikes-off, .bikes-off-result {
+.bikes-off {
     min-height: 25px;
     min-width: 25px;
     font-weight: 20px;
@@ -130,10 +133,32 @@ img {
     background-color: crimson;
 }
 
+.bikes-off-result {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   min-width: 340px;
+   padding: 10px 10px;
+   margin-left: 15px;
+   text-align: center;
+   background-color: crimson;
+   color: whitesmoke;
+   align-items: center;
+   border-bottom: #471b56 1px dotted;
+}
+
+.bikes-off:hover,.bikes-off-result:hover {
+    background-color: rgb(184, 11, 46);
+}
+
 .bikes-off .fa-solid {
     color: rgb(127, 74, 165);
 }
 
 .fa-solid {
     color: rgb(67, 33, 91);
+}
+
+.fa-solid:hover {
+    color: white;
 }

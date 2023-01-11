@@ -54,7 +54,6 @@ async function fetchBubiData() {
 
 fetchBubiData();
 
-
 search.addEventListener('input', (event) => {
     search_term = event.target.value.toLowerCase();
     showList();
@@ -62,47 +61,48 @@ search.addEventListener('input', (event) => {
 
 const showList = () => {
     results.innerHTML = '';
-    fetchBubiDataSearch(); 
+    bubiDataSearch(); 
   };
 
-  // TODO: Clear search result if search-input value deleted
-async function fetchBubiDataSearch() {
-    const response = await fetch(API);
-    const json = await response.json();
-    const result = await json.data.list;
-    result.filter((item) => {
-        return item.name.toLowerCase().includes(search_term);
-      })
-      .forEach((e) => {
+let newFetch = fetchBubiData();
 
-        if (e.code === 'BIKE') {
-            return;
-        }
+async function bubiDataSearch() {
+    newFetch.then(v =>
+        v.filter((item) => {
+            if (search_term) {
+                return item.name.toLowerCase().includes(search_term);
+            }
+        })
+        .forEach((e) => {
 
-        const itemSearch = document.createElement('div');
-        itemSearch.classList.add('item-result');
+            if (e.code === 'BIKE') {
+                return;
+            }
+
+            const itemSearch = document.createElement('div');
+            itemSearch.classList.add('item-result');
+            
+            const bike = document.createElement('span');
+            if (e.bikes === 0) {
+                itemSearch.classList.add('bikes-off-result');
+            }
+
+            const location = document.createElement('p');
+
+            const map = document.createElement('a');
+
+            container.appendChild(itemSearch);
+            itemSearch.appendChild(bike);
+            itemSearch.appendChild(location);
+            itemSearch.appendChild(map);
+
+            map.innerHTML = `<a class="map-result" href="https://www.google.com/maps/search/?api=1&query=${e.lat}%2C${e.lon}" target="_blank"><i class="fa-sharp fa-solid fa-map-pin"></i></a>`;
+            location.innerHTML = `<p class="location-result">${e.name}</p>`;
+            bike.innerHTML = `<span class="bikes-result">${e.bikes}</span>`;
+
+            results.appendChild(itemSearch);
         
-        const bike = document.createElement('span');
-        if (e.bikes === 0) {
-            itemSearch.classList.add('bikes-off-result');
-        }
+        })
+    );
 
-        const location = document.createElement('p');
-
-        const map = document.createElement('a');
-
-        container.appendChild(itemSearch);
-        itemSearch.appendChild(bike);
-        itemSearch.appendChild(location);
-        itemSearch.appendChild(map);
-
-        map.innerHTML = `<a class="map-result" href="https://www.google.com/maps/search/?api=1&query=${e.lat}%2C${e.lon}" target="_blank"><i class="fa-sharp fa-solid fa-map-pin"></i></a>`;
-        location.innerHTML = `<p class="location-result">${e.name}</p>`;
-        bike.innerHTML = `<span class="bikes-result">${e.bikes}</span>`;
-
-        results.appendChild(itemSearch);
-       
-    });
-
-    return result;
 }
